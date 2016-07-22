@@ -5,6 +5,9 @@
 <!-- 命名空间，对sql进行分类管理，可以理解为sql的隔离 
 注意：使用mapper代理的方法开发，namespace就具有特殊的重要的作用
 -->
+<!-- 开发规范：
+1.在mapper.xml中namespace等于mapper接口地址 
+2.mapper.xml中的方法名与statement的ID一致-->
 <mapper namespace="test">
 	<!-- 在映射文件中配置很多sql语句 
 	需求：通过ID查询用户表的记录-->
@@ -17,7 +20,7 @@
 	#{}中的参数名可以任意
 	resultType:指定sql输出结果所映射的java对象类型，
 	select指定单条记录所映射成的java对象-->
-	<select id="findUserById" parameterType="int" 
+	<select id="findCityById" parameterType="int" 
 	resultType="cn.itcast.mybatis.po.City" >
 		select * from city where ID = #{id }
 	</select>
@@ -28,7 +31,7 @@
 	${value}接收输入参数的内容，如果传入类型是简单类型，${}中只能使用value -->
 	<select id="findCityByName" parameterType="java.lang.String" 
 	resultType="cn.itcast.mybatis.po.City">
-		select * from city where Name like '%${value}%'
+		select * from city where Name like '%${value}%' 
 	</select>
 	<!-- 添加用户
 	parameterType:指定输入类型是pojo（包括用户信息）
@@ -48,12 +51,12 @@
 		value(#{Name}, #{CountryCode}, #{District}, #{Population})
 	</insert>
 	<!-- 根据ID删除用户，需要输入ID值 -->
-	<delete id="deleteUser" parameterType="java.lang.Integer">
+	<delete id="deleteCity" parameterType="java.lang.Integer">
 		delete from city where ID = #{id}
 	</delete>
 	<!-- 更新用户 -->
-	<update id="updateUser" parameterType="cn.itcast.mybatis.po.City">
-		update city set username=#{Name}, CountryCode=#{CountryCode},
+	<update id="updateCity" parameterType="cn.itcast.mybatis.po.City">
+		update city set Name=#{Name}, CountryCode=#{CountryCode},
 		 District=#{District}, Population=#{Population} where ID=#{ID}
 	</update>
 </mapper>

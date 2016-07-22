@@ -7,8 +7,10 @@
 -->
 <!-- 开发规范：
 1.在mapper.xml中namespace等于mapper接口地址 
-2.mapper.xml中的方法名与statement的ID一致-->
-<mapper namespace="test">
+2.mapper.xml中的方法名与statement的ID一致
+3.在sqlmapconfig中加载mapper-->
+
+<mapper namespace="cn.itcast.mybatis.mapper.CityMapper">
 	<!-- 在映射文件中配置很多sql语句 
 	需求：通过ID查询用户表的记录-->
 	<!-- 通过select执行数据库的查询 
@@ -21,7 +23,7 @@
 	resultType:指定sql输出结果所映射的java对象类型，
 	select指定单条记录所映射成的java对象-->
 	<select id="findCityById" parameterType="int" 
-	resultType="cn.itcast.mybatis.po.City" >
+	resultType="City" >
 		select * from city where ID = #{id }
 	</select>
 	<!-- 根据用户名称模糊查询用户信息，可能返回多条
@@ -30,14 +32,17 @@
 	使用${}拼接sql，可能会引起sql注入
 	${value}接收输入参数的内容，如果传入类型是简单类型，${}中只能使用value -->
 	<select id="findCityByName" parameterType="java.lang.String" 
-	resultType="cn.itcast.mybatis.po.City">
+	resultType="City">
 		select * from city where Name like '%${value}%' 
+	</select>
+	<select id="findCityByHashMap" parameterType="hashmap" resultType="City">
+		select * from city where ID = #{ID} and Name like '%${Name}%'
 	</select>
 	<!-- 添加用户
 	parameterType:指定输入类型是pojo（包括用户信息）
 	#{}指定pojo的属性名，接收到pojo对象的属性值 , mybatis通过ognl获取对象的属性值，
 	不能要有分号-->
-	<insert id="insertCity" parameterType="cn.itcast.mybatis.po.City" >
+	<insert id="insertCity" parameterType="City" >
 		<!-- 将插入数据的主键返回到user对象中
 		UUID():用不到，不过可以查一下
 		SELECT LAST_INSERT_ID()：得到刚insert进去记录的主键值，只适用于自增主键 
@@ -55,7 +60,7 @@
 		delete from city where ID = #{id}
 	</delete>
 	<!-- 更新用户 -->
-	<update id="updateCity" parameterType="cn.itcast.mybatis.po.City">
+	<update id="updateCity" parameterType="City">
 		update city set Name=#{Name}, CountryCode=#{CountryCode},
 		 District=#{District}, Population=#{Population} where ID=#{ID}
 	</update>
