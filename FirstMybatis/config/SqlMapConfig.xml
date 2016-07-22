@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	遵循一些规范：需要将mapper接口类名和mapper.xml映射文件名称保持一致，
 	且在一个目录中 
 	上面规范的前提是，使用的是mapper代理方法-->
-	<!-- <mapper class="cn.itcast.mybatis.mapper.CityMapper"/>-->
+	<mapper class="cn.itcast.mybatis.mapper.CityMapper"/>
 	</mappers>
 </configuration>
 <!-- 加载属性文件 -->

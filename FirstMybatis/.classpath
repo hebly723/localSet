@@ -4,8 +4,8 @@
 	<classpathentry kind="src" path="config"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="C:/Documents and Settings/new/桌面/mysql-connector-java-5.0.3-bin.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Documents and Settings/new/桌面/mybatis-3.2.7/mybatis-3.2.7/mybatis-3.2.7.jar" sourcepath="C:/Documents and Settings/new/桌面/mybatis-3.2.7/mybatis-3.2.7/mybatis-3.2.7.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry exported="true" kind="lib" path="D:/Program practice/之前的练习/代码/practise/OwnLibrary/WebRoot/WEB-INF/lib/mysql-connector-java-5.1.26-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/GitHub/localSet/FirstMybatis/lib/mybatis-3.2.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
